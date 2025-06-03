@@ -1,0 +1,122 @@
+<html>
+<style>
+            body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 700px;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+b {
+    color: #000000;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+input[type="number"], 
+select {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 0 15px;
+    font-size: 16px;
+    background: #2d2d2d;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    padding: 10px 0;
+}
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none; /* Đối với các trình duyệt WebKit */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+
+input[type="radio"] {
+    border-radius: 4px; /* Bo góc nhẹ, để tạo hình vuông */
+}
+
+input[type="radio"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+label {
+    color: #000000;
+}
+
+input[type="submit"] {
+    height: 45px;
+    margin: 35px 0;
+    width: 100%;
+    background: #4400ff;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #1f3fdd;
+}
+</style>
+<body >
+
+    <center>
+
+        <h1>  KẾT QUẢ :  </h1>
+    {%if data == 0%}
+    <h1>Không bị tiểu đường</h1>   
+
+    {%else%}
+    <h1>Bị tiểu đường</h1>
+    
+    {%endif%}
+
+        <br><br>
+        <h2>Hãy lưu ý rằng, mô hình chỉ có độ chính xác khoảng 75%</h2>
+    <a href='/'>trở về trang dự đoán</a>
+
+    </center>
+
+</body>
+
+</html>

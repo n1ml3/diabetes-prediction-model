@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự đoán bệnh tiểu đường</title>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 700px;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+b {
+    color: #000000;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+input[type="number"], 
+select {
+    height: 35px;
+    width: 80%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 0 15px;
+    font-size: 16px;
+    background: #2d2d2d;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    padding: 10px 0;
+}
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none; /* Đối với các trình duyệt WebKit */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+
+input[type="radio"] {
+    border-radius: 4px; /* Bo góc nhẹ, để tạo hình vuông */
+}
+
+input[type="radio"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+label {
+    color: #000000;
+}
+
+input[type="submit"] {
+    height: 45px;
+    margin: 35px 0;
+    width: 100%;
+    background: #795ce0;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #1f3fdd;
+}
+    </style>
+</head>
+<body class="container">
+    <center>
+        <h1>DỰ ĐOÁN BỆNH TIỂU ĐƯỜNG</h1><br>
+        
+        <form method="POST" action="{{url_for('home')}}">
+
+            <b>Huyết áp cao:</b>
+            <input type="radio" id="high_blood_yes" name="high_blood" value="1" required>
+            <label for="high_blood_yes">Có</label>
+            <input type="radio" id="high_blood_no" name="high_blood" value="0">
+            <label for="high_blood_no">Không</label>
+            <p></p>
+
+            <b>Cholesterol cao:</b>
+            <input type="radio" id="cholesterol_yes" name="cholesterol" value="1" required>
+            <label for="cholesterol_yes">Có</label>
+            <input type="radio" id="cholesterol_no" name="cholesterol" value="0">
+            <label for="cholesterol_no">Không</label>
+            <p></p>
+
+            <b>Chỉ số BMI:</b>
+            <input type="number" name="bmi" min="10" max="40" required placeholder="Nhập chỉ số BMI (chỉ nhập số đã làm tròn)">
+            <p></p>
+
+            <b>Tiền sử bệnh tim:</b>
+            <input type="radio" id="heart_disease_yes" name="heart_disease" value="1" required>
+            <label for="heart_disease_yes">Có</label>
+            <input type="radio" id="heart_disease_no" name="heart_disease" value="0">
+            <label for="heart_disease_no">Không</label>
+            <p></p>
+
+            <b>Hoạt động thể chất thường xuyên:</b>
+            <input type="radio" id="physical_activity_yes" name="physical_activity" value="1" required>
+            <label for="physical_activity_yes">Có</label>
+            <input type="radio" id="physical_activity_no" name="physical_activity" value="0">
+            <label for="physical_activity_no">Không</label>
+            <p></p>
+
+            <b>Hấp thụ đồ uống có cồn ở cường độ cao:</b>
+            <input type="radio" id="alcohol_yes" name="alcohol" value="1" required>
+            <label for="physical_activity_yes">Có</label>
+            <input type="radio" id="alcohol_no" name="alcohol" value="0">
+            <label for="physical_activity_no">Không</label>
+            <p></p>
+
+            <b>Nhóm tuổi:</b>
+            <select name="age_group" required >
+                <option value="">Chọn nhóm tuổi</option>
+                <option value="1">1 - 18-24</option>
+                <option value="2">2 - 25-30</option>
+                <option value="3">3 - 31-36</option>
+                <option value="4">4 - 37-41</option>
+                <option value="5">5 - 42-47</option>
+                <option value="6">6 - 48-53</option>
+                <option value="7">7 - 54-59</option>
+                <option value="8">8 - 60-64</option>
+                <option value="9">9 - 65-69</option>
+                <option value="10">10 - 70-74</option>
+                <option value="11">11 - 75-79</option>
+                <option value="12">12 - 80+</option>
+            </select>
+            <p></p>
+
+            <b>Tình trạng sức khỏe tổng quát:</b>
+            <select name="general_health" required>
+                <option value="">Chọn mức độ</option>
+                <option value="1">1 - Rất kém</option>
+                <option value="2">2 - Kém</option>
+                <option value="3">3 - Trung bình</option>
+                <option value="4">4 - Tốt</option>
+                <option value="5">5 - Rất tốt</option>
+            </select>
+            <p></p>
+
+            <b>Số ngày sức khỏe tâm thần không tốt (trong tháng):</b>
+            <input type="number" name="mental_health" min="0" max="30" required placeholder="0-30 ngày">
+            <p></p>
+
+            <b>Số ngày sức khỏe thể chất không tốt (trong tháng):</b>
+            <input type="number" name="physical_health" min="0" max="30" required placeholder="0-30 ngày">
+            <p></p>
+
+            <b>Khó khăn trong việc đi bộ:</b>
+            <input type="radio" id="walking_diff_yes" name="walking_difficulty" value="1" required>
+            <label for="walking_diff_yes">Có</label>
+            <input type="radio" id="walking_diff_no" name="walking_difficulty" value="0">
+            <label for="walking_diff_no">Không</label>
+            <p></p>
+
+            <b>Trình độ học vấn:</b>
+            <select name="education" required>
+                <option value="">Chọn trình độ</option>
+                <option value="1">1 - Chưa tốt nghiệp THCS</option>
+                <option value="1">2 - Chưa tốt nghiệp THPT</option>
+                <option value="2">3 - THPT</option>
+                <option value="3">4 - Cao đẳng</option>
+                <option value="4">5 - Đại học</option>
+                <option value="5">6 - Sau đại học</option>
+            </select>
+            <p></p>
+
+            <b>Nhóm thu nhập:</b>
+            <select name="income" required>
+                <option value="">Chọn nhóm thu nhập</option>
+                <option value="1">1 - Dưới 5 triệu/tháng</option>
+                <option value="2">2 - 5-10 triệu/tháng</option>
+                <option value="3">3 - 10-20 triệu/tháng</option>
+                <option value="4">4 - Trên 20 triệu/tháng</option>
+            </select>
+            <p></p>
+
+            <input type="submit" value="Dự đoán">
+        </form>
+    </center>
+</body>
+</html>
