@@ -8,3 +8,5 @@ Key Features
 - Flask Web Application: A user-friendly web interface for interacting with the model, enabling real-time predictions.
 
 This project aims to demonstrate the application of machine learning in healthcare through a robust prediction model and an accessible web-based interface.
+
+![image](https://github.com/user-attachments/assets/7c34d8be-b965-4a06-9d8e-d5d3dc85763a)
